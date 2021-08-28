@@ -1,0 +1,81 @@
+.header {
+    // background-color: var(--color-grey-dark-1);
+    grid-column: full-start / col-end 6;
+    // Why can't we use hex css variable inside rgba? https://stackoverflow.com/a/41265350/6309913
+    // background-image: linear-gradient(rgba(var(--color-secondary), .93), rgba(var(--color-secondary), .93));
+    background-image: linear-gradient(rgba(var(--color-secondary-rgb), .93), rgba(var(--color-secondary-rgb), .93)), url(../img/hero.jpeg);
+    background-size: cover;
+    background-position: center;
+
+    padding: 8rem;
+    padding-top: 4rem;
+
+    display: grid;
+    // grid container's height is defined so we can use fr unit for the row.
+    // We can force first and fourth row to take all the space they can.
+    // Height of third row can be 6rem (case when text doesn't break) but if it does for smaller screen than we can go upto min-content
+    grid-template-rows: 1fr min-content minmax(6rem, min-content) 1fr;
+    // There is only one column and it will be as wide as the largest grid item
+    // column set to max-content means it should be as wide as possible as in order to fit all of the content regardless the width of viewport/container
+    // For small screen sizes it's an issue because content will go out of viewport but will not break into next line
+    // grid-template-columns: max-content;
+    // Now column should not be more narrow than its intrinsic minimum width (i.e., width of biggest unbreakable element) and it can be as large as max-content
+    grid-template-columns: minmax(min-content, max-content);
+    grid-row-gap: 1.5rem;
+
+    justify-content: center;
+
+    @media only screen and (max-width: $bp-medium) {
+        grid-column: full-start / full-end;
+    }
+
+    @media only screen and (max-width: $bp-small) {
+        padding: 5rem;
+    }
+
+    &__logo {
+        height: 3rem;
+        justify-self: center;
+    }
+
+    &__btn {
+        align-self: start;
+        justify-self: start;
+    }
+
+    &__seenon-text {
+        font-size: 1.6rem;
+        color: var(--color-grey-light-2);
+
+        display: grid;
+        grid-template-columns: 1fr max-content 1fr;
+        grid-column-gap: 1.5rem;
+        align-items: center;
+
+        // Text can be treated as grid item
+        // This pseudo element together with the text are three grid items
+        &::before,
+        &::after {
+            content: "";
+            display: block;
+            height: 1px;
+            background-color: currentColor;
+        }
+    }
+
+    &__seenon-logos {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-column-gap: 3rem;
+        justify-items: center;
+        align-items: center;
+
+        img {
+            // Height can be 2.5rem but can be less
+            max-height: 2.5rem;
+            // Width can be 100% but can be less
+            max-width: 100%;
+            filter: brightness(70%);
+        }
+    }
+}

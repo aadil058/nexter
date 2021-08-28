@@ -1,0 +1,33 @@
+// It's same as html but with higher specificity
+:root {
+    // Why would you use native CSS custom properties instead of sass variables? (https://css-tricks.com/difference-between-types-of-css-variables/)
+    // You can use them without the need of a preprocessor.
+    // They cascade. You can set a variable inside any selector to set or override its current value. (That's why I put them inside :root selector)
+    // When their values change (e.g. media query or other state), the browser repaints as needed.
+    // You can access and manipulate them in JavaScript.
+
+    --color-primary: #C69963;
+    --color-primary-dark: #B28451;
+
+    --color-secondary: #101D2C;
+    --color-secondary-rgb: 16,29,44;
+
+    --color-grey-light-1: #F9F7F6;
+    --color-grey-light-2: #AAAAAA;
+
+    --color-grey-dark-1: #54483A;
+    --color-grey-dark-2: #6D5D4B;
+
+    --font-primary: 'Nunito', sans-serif;
+    --font-display: 'Josefin Sans', sans-serif;
+}
+
+// Why can't we use css variables in mediaquery
+// https://stackoverflow.com/questions/40722882/css-native-variables-not-working-in-media-queries
+$bp-largest: 75em;                 // 1200px/16px
+$bp-large: 62.5em;                 // 1000px/16px
+$bp-medium: 50em;                  // 800px/16px
+$bp-small: 37.5em;                 // 600px/16px
+// $bp-smallest: 31.25em;          // 500px/16px
+// $bp-mobile-small: 26.25em;      // 420px/16px
+// $bp-mobile-smallest: 23.75em;   // 380px/16px

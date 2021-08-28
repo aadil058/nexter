@@ -1,0 +1,47 @@
+/* Apply font property using body element selector. We do this because properties related to fonts are usually inherited. Using this approach is more efficient and popular approach 
+than using universal selector */
+body {
+    font-family: var(--font-primary);
+    color: var(--color-grey-dark-2);
+    font-weight: 300;
+    line-height: 1.6;
+}
+
+// Its different from mixins its a placeholder
+// Example if heading-4 extends this then there will be two heading-4 classes, 1 with below code and 1 which extends
+%heading {
+    font-family: var(--font-display);
+    font-weight: 400;
+}
+
+.heading-1 {
+    @extend %heading;
+    font-size: 4.5rem;
+    color: var(--color-grey-light-1);
+    line-height: 1;
+}
+
+.heading-2 {
+    @extend %heading;
+    font-size: 4rem;
+    font-style: italic;
+    line-height: 1;
+
+    &--light { color: var(--color-grey-light-1); }
+    &--dark { color: var(--color-grey-dark-1); }
+}
+
+.heading-3 {
+    @extend %heading;
+    font-size: 1.6rem;
+    color: var(--color-primary);
+    text-transform: uppercase;
+}
+
+.heading-4 {
+    @extend %heading;
+    font-size: 1.9rem;
+
+    &--light { color: var(--color-grey-light-1); }
+    &--dark { color: var(--color-grey-dark-1); }
+}

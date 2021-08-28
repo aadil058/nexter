@@ -1,0 +1,38 @@
+.container {
+    display: grid;
+    
+    // 1st row. It is a function of height, row's height grows and shrinks with the viewport height
+    // 2nd row. The min-content sizing keyword represents the intrinsic minimum width of the content. For text content this means that the content will take all soft-wrapping opportunities, becoming as small as the longest word.
+    //          In this case min-content is used for row's height so container will be as large as the content?
+    // 3rd row. It is a function of width, row's height grows and shrinks with the viewport width
+    // 4th row. Same as 2nd row.
+    // 5th row. Same as 2nd row.
+    // 6th row. Same as 2nd row.
+    grid-template-rows: 80vh min-content 40vw repeat(3, min-content);
+    
+    // An 8 column layout (each column divided into equal sizes)
+    // grid-template-columns: repeat(8, 1fr);
+
+    // minmax(min-content, 14rem) means width of column should be between its instrinsic minimum width of the content and 14 rem.
+    // Where did 14rem come from??? 1140px/8columns = 142.5px (140px approx. which is equal to 140px).
+    // It is not necessary that min-content will always be less than 14rem. It can be greater than 14rem.
+    // 11 column layout,, frs around repeat() function are just for centering 8 columns
+    // frs will also starts to shrink first with shrinking width because they are basically occupying the remaining free space but as soon as 6rem lower limit is reached other columns will start to shrink
+    // frs are inside minmax to ensure that there is atleast 60px padding around the centered 8 column grid
+    // If we didn't have 8rem column to the left we could have centered grid using margin 0 auto trick to center it, or justify-content property
+    grid-template-columns: [sidebar-start] 8rem [sidebar-end full-start] minmax(6rem, 1fr) [center-start] repeat(8, [col-start] minmax(min-content, 14rem) [col-end]) [center-end] minmax(6rem, 1fr) [full-end];
+
+    // Add a new row and Remove the first column
+    @media only screen and (max-width: $bp-large) {
+        grid-template-rows: 6rem 80vh min-content 40vw repeat(3, min-content);
+        // If we had used line numbers instead of names then it would have caused a lot of mess that could only be fixed by manually updating all line numbers throughout the code.
+        grid-template-columns: [full-start] minmax(6rem, 1fr) [center-start] repeat(8, [col-start] minmax(min-content, 14rem) [col-end]) [center-end] minmax(6rem, 1fr) [full-end];
+    }
+
+    // Need a new row after the header row
+    @media only screen and (max-width: $bp-medium) {
+        // 100vh - 6rem = viewport height - sidebar height
+        grid-template-rows: 6rem calc(100vh - 6rem) repeat(6, min-content);
+    }
+}
+

@@ -1,0 +1,25 @@
+.feature {
+    display: grid;
+    // 1st column. It's width will be as big as intrinsic minimum width of the content.
+    // 2nd column. Will take the remaining space.
+    grid-template-columns: min-content 1fr;
+    grid-row-gap: 1.5rem;
+    grid-column-gap: 2.5rem;
+
+    &__icon {
+        width: 4.5rem;
+        height: 4.5rem;
+        fill: var(--color-primary);
+
+        // We want feature__icon to take all available rows of the grid in order to move feaure__text to the second column
+        // Other benefit of this approach is that the height of the first row for heading-4 will be defined by its content's height not icon's height.
+        // grid-row: 1 / -1;    // Will not work because -1 will reach as far as the last explicit row, but we also have implicity row as well
+        grid-row: 1 / span 2;
+
+        transform: translateY(-1rem);
+    }
+
+    &__text {
+        font-size: 1.7rem;
+    }
+}

@@ -1,0 +1,17 @@
+.features {
+    grid-column: center-start / center-end;
+
+    // this grid item is itself a grid container
+    display: grid;
+    // grid-template-columns: repeat(3, 1fr);
+    // auto-fit will try to fit as many columns as possible based on the column width we define using minmax function in this case.
+    // column width should be between 250px and 1fr3
+    grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
+    grid-gap: 6rem;
+
+    // By default this property is set to stretch which caused the feature items to take all vertical space of the grid cells.
+    // It was okay as long as paragraph's text content was large but feature items with small paragraph content very having alignment issue with the rest of the feature item.
+    align-items: start;
+
+    margin: 15rem 0;
+}
