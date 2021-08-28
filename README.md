@@ -14,7 +14,7 @@ To view a live demo **[click here](https://aadil058.github.io/nexter/)**
 </div>
 
 <div align="center">
-  <img src="https://github.com/aadil058/nexter/blob/main/gifs/mobile.gif" alt="Nexter Mobile" width="600px" />
+  <img src="https://github.com/aadil058/nexter/blob/main/gifs/mobile.gif" alt="Nexter Mobile" width="300px" />
   <br>
 </div>
 
